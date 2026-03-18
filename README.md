@@ -126,9 +126,10 @@ RunSync/
 ├── garmin_client.py            # Garmin Connect automation
 ├── sheets_client.py            # Google Sheets integration
 ├── requirements.txt            # Python Dependencies
-├── strava_tokens.json          # Strava authentication tokens
 └── README.md                   # This file
 ```
+
+`strava_tokens.json` is created locally by OAuth and must **never** be committed (see `.gitignore`).
 
 ## 🎮 **Usage Examples**
 
