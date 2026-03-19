@@ -22,12 +22,17 @@ class StravaClient:
         self.auth_base_url = "https://www.strava.com/oauth/authorize"
 
     def load_tokens(self):
-        # Load tokens from file if it exists, otherwise return empty dictionary
+        # CI/GitHub Actions: full JSON from secret (same shape as strava_tokens.json)
+        env_raw = os.getenv("STRAVA_TOKENS_JSON")
+        if env_raw and env_raw.strip():
+            try:
+                return json.loads(env_raw.strip())
+            except json.JSONDecodeError:
+                print("Warning: STRAVA_TOKENS_JSON is not valid JSON; trying token file.")
         if os.path.exists(self.token_file):
             with open(self.token_file, "r") as f:
                 return json.load(f)
-        else:
-            return {}
+        return {}
 
     def save_tokens(self, tokens):
         # Save tokens to file

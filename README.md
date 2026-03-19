@@ -93,6 +93,7 @@ Go to **Settings** → **Secrets and variables** → **Actions** and add:
 - `DOCUMENT_NAME`: Name of your Google Sheets document
 - `CLIENT_ID`: Strava API client ID
 - `CLIENT_SECRET`: Strava API client secret
+- `STRAVA_TOKENS_JSON`: **Required for Actions** — exact contents of your local `strava_tokens.json` (one JSON object: `access_token`, `refresh_token`). After OAuth locally, copy the file contents into this secret. If a workflow run refreshes the token and Strava returns a new `refresh_token`, update the secret from your updated local file.
 - `GARMIN_EMAIL`: Your Garmin Connect email
 - `GARMIN_PASSWORD`: Your Garmin Connect password
 
